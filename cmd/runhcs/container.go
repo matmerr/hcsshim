@@ -296,7 +296,7 @@ func createContainer(cfg *containerConfig) (_ *container, err error) {
 			return nil, fmt.Errorf("host container %s is not a VM host", hostID)
 		}
 		hostUniqueID = host.UniqueID
-	} else if vmisolated && (isSandbox || cfg.Spec.Linux != nil) {
+	} else if vmisolated || isSandbox {
 		hostID = cfg.ID
 		newvm = true
 		hostUniqueID = uniqueID
